@@ -1,13 +1,14 @@
 """
 10 de enero 0:48
 """
-import numpy as np
-import pandas as pd
-import tensorflow as tf
+# import numpy as np
+# import pandas as pd
+# import tensorflow as tf
 import os
-import cv2
-import matplotlib.pyplot as plt
-from tqdm import
+
+# import cv2
+# import matplotlib.pyplot as plt
+# from tqdm import
 
 # os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 # os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -17,5 +18,12 @@ files = os.listdir(path)
 files.sort()
 
 print(files)
-print(dir([]))
-print(type(files))
+# print(dir([]))
+# print(type(files))
+
+images_arr = []
+labels_arr = []
+
+for i in range(len(files)):
+    file = os.listdir(path + "/" + files[i])
+    print(file)
