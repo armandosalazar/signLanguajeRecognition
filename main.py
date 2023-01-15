@@ -14,16 +14,20 @@ import os
 # os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 path = './images'
-files = os.listdir(path)
-files.sort()
+directories = os.listdir(path)
+directories.sort()
 
-print(files)
+print(f'Directories: {directories}')
 # print(dir([]))
 # print(type(files))
 
 images_arr = []
 labels_arr = []
 
-for i in range(len(files)):
-    file = os.listdir(path + "/" + files[i])
-    print(file)
+# for i in range(len(directories)):
+#     files = os.listdir(path + "/" + directories[i])
+#     print(files)
+
+for directory in directories:
+    files = os.listdir(f'{path}/{directory}')
+    print(f'Directory {directory}: {files}')
