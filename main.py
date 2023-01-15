@@ -30,4 +30,7 @@ labels_arr = []
 
 for directory in directories:
     files = os.listdir(f'{path}/{directory}')
-    print(f'Directory {directory}: {files}')
+    files.sort()
+    print(f'\tDirectory {directory}: {files}')
+    for file in files:
+        print(f'\t\t{path}/{directory}/{file}')
