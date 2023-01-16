@@ -34,15 +34,19 @@ for directory in tqdm(directories):
     # print(f'\tDirectory {directory}: {files}')
     for index, file in enumerate(files):
         # print(f'\t\t{path}/{directory}/{file}')
-        image = cv2.imread(f'{path}/{directory}/{file}')
-        image = cv2.resize(image, (96, 96))
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        images.append(image)
-        labels.append(index)
-        # print(image, index)
-        # cv2.imshow(file, image)
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
+        try:
+            image = cv2.imread(f'{path}/{directory}/{file}')
+            image = cv2.resize(image, (96, 96))
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            images.append(image)
+            labels.append(index)
+            print(image, index)
+            cv2.imshow(file, image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+        except Exception as e:
+            print(str(e))
+
 
 images = np.array(images)
 labels = np.array(labels, dtype=float)
