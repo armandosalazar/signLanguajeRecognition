@@ -3,7 +3,7 @@
 """
 import numpy as np
 import pandas as pd
-# import tensorflow as tf
+import tensorflow as tf
 import os
 
 import cv2
@@ -48,3 +48,37 @@ images = np.array(images)
 labels = np.array(labels, dtype=float)
 
 print(labels)
+
+# from sklearn.model_selection import train_test_split
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, Y_train, Y_test = train_test_split(images, labels, test_size=0.15)
+
+# X_train 85% of images
+# X_test 15% of images
+
+# Create a model
+from keras import layers, callbacks, utils, applications, optimizers
+from keras.models import Sequential, Model, load_model
+
+model = Sequential()
+# add pretrained models to Sequential model
+# EfficientNetB0 pretrained model
+pretrained = tf.keras.applications.EfficientNetB0(input_shape=(96, 96, 3), include_top=False)
+model.add(pretrained)
+
+# add Pooling to model
+model.add(layers.GlobalAvgPool2D())
+
+# add dropout to model accuracy by reducer overwriting
+model.add(layers.Dropout(0.3))
+
+# add dese layer to as in output
+model.add(layers.Dense(1))
+
+# build model
+model.build(input_shape=(None, 96, 96, 3))
+
+# to see model summary
+model.summary()
