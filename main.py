@@ -43,3 +43,8 @@ for directory in tqdm(directories):
         # cv2.imshow(file, image)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
+
+images = np.array(images)
+labels = np.array(labels, dtype=float)
+
+print(labels)
